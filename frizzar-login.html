@@ -1,88 +1,235 @@
 <!doctype html>
-<html lang="pt-BR"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Frizzar — Login</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--promo-image:url('imagens/ChatGPT%20Image%2027%20de%20ago.%20de%202026,%2014_05_42.png');--red:#ff0000;--gold:#d7aa62}*{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,'Segoe UI',Roboto,Arial,sans-serif;min-height:100vh;overflow-x:hidden}.login-screen{display:flex;min-height:100vh;width:100%}
-/* Painel promocional: as URLs das fotos ficam centralizadas nas variáveis acima. */
-.promo-side{position:relative;flex:1 1 58%;min-width:0;padding:54px 54px 38px;overflow:hidden;background:#101010 var(--promo-image) center/cover no-repeat;color:#fff}.promo-side:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,5,8,.92),rgba(18,8,14,.76) 47%,rgba(15,7,11,.57))}.promo-side:after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.2;background-image:radial-gradient(rgba(255,255,255,.18) .55px,transparent .7px);background-size:5px 5px;mix-blend-mode:soft-light}.promo-inner{position:relative;z-index:1;display:flex;flex-direction:column;min-height:calc(100vh - 92px)}.promo-copy{max-width:400px;animation:appear .65s cubic-bezier(.2,.75,.3,1) both}.eyebrow{display:flex;align-items:center;gap:9px;margin-bottom:15px;color:rgba(255,255,255,.78);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}.eyebrow:before{content:'';width:26px;height:2px;background:var(--red)}.promo-title{font-size:clamp(37px,4vw,60px);font-weight:800;letter-spacing:-.075em;line-height:.98}.promo-title span{color:var(--red);display:block}.promo-lead{margin-top:18px;color:rgba(255,255,255,.76);font-size:14px;line-height:1.55}
-.cards-stage{position:relative;flex:1;min-height:420px;margin:26px 0 0;overflow:visible}.feature-banner{position:absolute;right:0;bottom:24px;left:0;min-height:318px;border:1px solid rgba(215,170,98,.34);border-radius:22px;background:#18110d var(--promo-image) center/cover no-repeat;box-shadow:0 25px 62px rgba(0,0,0,.52),inset 0 1px rgba(255,255,255,.08);overflow:visible;isolation:isolate}.feature-banner:before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(90deg,rgba(4,3,3,.96) 0%,rgba(8,5,4,.88) 35%,rgba(11,7,4,.42) 66%,rgba(10,6,3,.15) 100%);z-index:-1}.feature-banner:after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);pointer-events:none}.banner-copy{position:relative;z-index:3;max-width:45%;padding:48px 0 42px 44px}.banner-copy .eyebrow{color:var(--gold);margin-bottom:12px}.banner-copy .eyebrow:before{background:var(--gold)}.banner-title{font-size:clamp(31px,3.1vw,48px);font-weight:800;line-height:.98;letter-spacing:-.07em}.banner-title em{color:var(--red);font-style:normal}.banner-text{max-width:245px;margin-top:16px;color:rgba(255,255,255,.72);font-size:13px;line-height:1.5}.banner-line{width:42px;height:1px;margin-top:26px;background:var(--gold)}.banner-people{position:absolute;z-index:2;right:-2%;bottom:0;width:min(63%,590px);height:auto;filter:drop-shadow(-16px 16px 20px rgba(0,0,0,.42));pointer-events:none}
-.custom-card{top:26px;left:28%;z-index:2;width:230px;padding-bottom:15px;transform:rotate(-2.8deg);animation-delay:.1s,1.1s}.asset-preview{display:block;width:calc(100% - 28px);height:122px;margin:0 14px;border:1px solid #ececec;border-radius:10px;object-fit:cover;object-position:center}
-.campaign-card{top:164px;right:3%;z-index:3;width:213px;padding-bottom:13px;transform:rotate(3deg);animation-delay:.22s,1.22s}.campaign-visual{position:relative;height:104px;margin:0 12px;border-radius:9px;overflow:hidden;background:var(--campaign-image) center/cover}.campaign-visual:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.65),transparent)}.sale-tag{position:absolute;z-index:1;top:14px;left:12px;color:#fff;font-size:8px;line-height:1.1;font-weight:700}.sale-tag strong{display:block;font-size:24px;letter-spacing:-.09em}.campaign-footer{display:flex;align-items:center;justify-content:space-between;margin:11px 13px 0}.campaign-footer small{color:#767676;font-size:7px}.campaign-footer b{color:var(--red);font-size:8px}
-.music-card{left:2%;bottom:28px;z-index:1;width:300px;padding-bottom:13px;transform:rotate(-1deg);animation-delay:.34s,1.34s}.music-card .asset-preview{width:calc(100% - 24px);height:104px;margin:0 12px;object-fit:contain;background:#fff}@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes card-in{from{opacity:0}to{opacity:1}}@keyframes drift{0%,100%{margin-top:0}50%{margin-top:-7px}}
-/* Painel de login — preservado. */.login-side{flex:0 0 420px;max-width:420px;background:#fff;display:flex;flex-direction:column;align-items:center;padding:80px 40px 40px}.login-logo{font-size:26px;font-weight:600;letter-spacing:.06em;color:#111;margin-bottom:50px;display:flex;align-items:baseline;gap:2px}.login-logo .dot{color:#e0473f;font-size:26px;line-height:0}.login-form{width:100%;max-width:320px}.login-form input{width:100%;padding:14px 16px;margin-bottom:16px;border:1px solid #d8d8d8;border-radius:6px;font-size:14px;color:#333;outline:none}.login-form input:focus{border-color:#3a6f96}.login-form button{width:100%;padding:14px;background:#3a6f96;color:#fff;border:none;border-radius:6px;font-size:15px;font-weight:600;cursor:pointer;margin-top:4px;margin-bottom:16px}.login-form button:hover{background:#325f81}.login-form a{display:block;text-align:left;font-size:13px;color:#3a6f96;text-decoration:underline}
-@media(max-width:1080px){.promo-side{padding:44px 38px 30px}.custom-card{left:23%}.campaign-card{right:0}.music-card{left:0}}@media(max-width:900px){.login-screen{flex-direction:column}.login-side{flex:none;max-width:100%;padding:48px 24px;order:1}.promo-side{order:2;padding:40px 24px 32px}.promo-inner{min-height:auto}.cards-stage{display:flex;gap:15px;min-height:0;margin:30px 0 0;overflow-x:auto;padding:4px 4px 17px}.float-card{position:relative;top:auto;right:auto;bottom:auto;left:auto;flex:0 0 210px;transform:none;animation:card-in .6s both}.music-card{flex-basis:300px}}@media(max-width:520px){.promo-title{font-size:39px}.promo-lead{max-width:260px}.login-side{padding:40px 20px 32px}.cards-stage{margin-right:-24px}.float-card{flex-basis:195px}.music-card{flex-basis:300px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important}}
-/* Composição original de cards, com o novo banner como detalhe inferior. */
-:root{--promo-image:url('imagens/fundo.png');--banner-image:url('imagens/ChatGPT%20Image%2027%20de%20ago.%20de%202026,%2014_05_42.png')}
-.promo-cards{position:relative;flex:1;min-height:350px;margin:12px -10px 0 0}.promo-cards .float-card{position:absolute;overflow:hidden;border:1px solid rgba(255,255,255,.78);border-radius:17px;background:#fafafa;color:#151515;box-shadow:0 24px 55px rgba(0,0,0,.42),0 3px 10px rgba(0,0,0,.22);animation:card-in .7s cubic-bezier(.2,.75,.3,1) both,drift 5.5s ease-in-out 1s infinite;transition:box-shadow .25s,filter .25s}.promo-cards .float-card:hover{filter:brightness(1.02);box-shadow:0 29px 65px rgba(0,0,0,.52);animation-play-state:paused}.card-top{display:flex;align-items:center;justify-content:space-between;padding:14px 15px 10px}.card-title{font-size:11px;font-weight:700;letter-spacing:-.025em}.card-dots{display:flex;gap:3px}.card-dots i{width:3px;height:3px;border-radius:99px;background:#aaa}.campaign-visual{background-image:var(--promo-image)}
-.detail-banner-stage{flex:none;min-height:270px;margin:18px 0 0}.detail-banner-stage .feature-banner{min-height:220px;bottom:0;background-image:var(--banner-image)}.detail-banner-stage .banner-copy{padding-top:33px;padding-bottom:25px}.detail-banner-stage .banner-title{font-size:clamp(25px,2.6vw,38px)}.detail-banner-stage .banner-text{margin-top:12px}.detail-banner-stage .banner-line{margin-top:17px}.detail-banner-stage .banner-people{width:min(62%,540px)}
-/* Banner responsive overrides */
-.banner-people{bottom:-5px;width:min(68%,650px)}
-@media(max-width:1080px){.banner-copy{padding-left:34px}}
-@media(max-width:900px){.promo-side{padding:56px 24px 32px}.promo-cards{display:flex;gap:15px;min-height:0;margin:30px 0 20px;overflow-x:auto;padding:4px 4px 17px}.promo-cards .float-card{position:relative;top:auto;right:auto;bottom:auto;left:auto;flex:0 0 210px;transform:none;animation:card-in .6s both}.promo-cards .music-card{flex-basis:300px}.detail-banner-stage{display:block;min-height:295px;margin:0;overflow:visible;padding:0}.detail-banner-stage .feature-banner{bottom:0;min-height:225px}.detail-banner-stage .banner-copy{max-width:48%;padding:32px 0 22px 28px}.detail-banner-stage .banner-people{width:min(67%,530px)}}
-@media(max-width:520px){.promo-side{padding:50px 18px 24px}.promo-cards{margin-right:-18px}.promo-cards .float-card{flex-basis:195px}.promo-cards .music-card{flex-basis:300px}.detail-banner-stage{min-height:260px}.detail-banner-stage .feature-banner{min-height:205px;border-radius:18px}.detail-banner-stage .banner-copy{max-width:56%;padding:27px 0 18px 21px}.detail-banner-stage .banner-title{font-size:27px}.detail-banner-stage .banner-text{font-size:10px;max-width:145px}.detail-banner-stage .banner-line{margin-top:13px}.detail-banner-stage .banner-people{right:-10%;width:72%}}
-/* Banner inferior: mais horizontal e compacto. */
-.detail-banner-stage{min-height:215px}.detail-banner-stage .feature-banner{min-height:160px}.detail-banner-stage .banner-copy{padding-top:24px;padding-bottom:16px}.detail-banner-stage .banner-title{font-size:clamp(22px,2.25vw,32px)}.detail-banner-stage .banner-text{font-size:11px}.detail-banner-stage .banner-line{margin-top:12px}.detail-banner-stage .banner-people{width:min(58%,500px)}
-@media(max-width:900px){.detail-banner-stage{min-height:245px}.detail-banner-stage .feature-banner{min-height:175px}}
-@media(max-width:520px){.detail-banner-stage{min-height:230px}.detail-banner-stage .feature-banner{min-height:150px}.detail-banner-stage .banner-title{font-size:24px}.detail-banner-stage .banner-text{display:none}}
-/* Ajuste final do banner: base dos personagens sempre contida no retângulo. */
-.detail-banner-stage{min-height:175px}.detail-banner-stage .feature-banner{min-height:125px}.detail-banner-stage .banner-copy{padding:17px 0 12px 29px}.detail-banner-stage .banner-title{font-size:clamp(20px,1.9vw,28px)}.detail-banner-stage .banner-text{display:none}.detail-banner-stage .banner-line{width:30px;margin-top:10px}.detail-banner-stage .banner-people{right:2%;bottom:0;width:min(38%,310px)}
-@media(max-width:900px){.detail-banner-stage{min-height:190px}.detail-banner-stage .feature-banner{min-height:130px}.detail-banner-stage .banner-people{right:1%;width:min(42%,280px)}}
-@media(max-width:520px){.detail-banner-stage{min-height:178px}.detail-banner-stage .feature-banner{min-height:118px}.detail-banner-stage .banner-copy{padding:16px 0 10px 20px}.detail-banner-stage .banner-title{font-size:20px}.detail-banner-stage .banner-people{right:0;width:45%}}
-/* Flutuação suave: usa transform para evitar travamentos de layout. */
-@keyframes card-float{0%,100%{transform:translate3d(0,0,0) rotate(var(--tilt))}50%{transform:translate3d(0,-7px,0) rotate(var(--tilt))}}
-@media(min-width:901px){.promo-cards .float-card{will-change:transform;animation:card-in .7s cubic-bezier(.2,.75,.3,1) both,card-float 5.5s ease-in-out 1s infinite}.promo-cards .custom-card{--tilt:-2.8deg;animation-delay:.1s,1.1s}.promo-cards .campaign-card{--tilt:3deg;animation-delay:.22s,1.22s}.promo-cards .music-card{--tilt:-1deg;animation-delay:.34s,1.34s}}
-/* Desktop: banner dos profissionais ancorado na base do painel promocional. */
-@media(min-width:901px){.promo-inner{position:relative}.detail-banner-stage{position:absolute;right:0;bottom:0;left:0;width:auto;margin:0}.promo-cards{margin-bottom:175px}.promo-cards .custom-card,.promo-cards .campaign-card,.promo-cards .music-card{transform:rotate(0)}.promo-cards .custom-card{--tilt:0deg}.promo-cards .campaign-card{--tilt:0deg}.promo-cards .music-card{--tilt:0deg}}
-/* Mantém o banner inferior visível na viewport, sem depender da rolagem da página. */
-@media(min-width:1081px){.detail-banner-stage{position:fixed;z-index:6;right:474px;bottom:38px;left:54px}}
-@media(min-width:901px) and (max-width:1080px){.detail-banner-stage{position:fixed;z-index:6;right:458px;bottom:30px;left:38px}}
-/* Cards de promoção e Story com os assets locais completos. */
-.promo-cards .campaign-card .asset-preview{width:calc(100% - 24px);height:170px;margin:0 12px;object-fit:contain;background:#fff}.promo-cards .story-card{top:8px;right:2%;z-index:4;width:230px;padding-bottom:13px}.promo-cards .story-card .asset-preview{height:82px;object-fit:contain;background:#202020}
-@media(min-width:901px){.promo-cards .story-card{--tilt:0deg;transform:rotate(0);animation-delay:.42s,1.42s}}
-@media(max-width:900px){.promo-cards .story-card{flex:0 0 230px}}
-/* Card de planos. */
-.promo-cards .plan-card{top:142px;left:43%;z-index:3;width:178px;padding-bottom:12px}.promo-cards .plan-card .asset-preview{width:calc(100% - 24px);height:158px;margin:0 12px;object-fit:contain;background:#171b1b}
-@media(min-width:901px){.promo-cards .plan-card{--tilt:0deg;transform:rotate(0);animation-delay:.5s,1.5s}}
-@media(max-width:900px){.promo-cards .plan-card{flex:0 0 185px}}
-/* Ocupa melhor o canto superior direito da composição. */
-@media(min-width:901px){.promo-cards .story-card{top:-4px;right:0;width:280px}.promo-cards .story-card .asset-preview{height:100px}.promo-cards .campaign-card{top:150px;right:4%}}
-/* Mantém o tamanho original e eleva o Story no canto superior direito. */
-@media(min-width:901px){.promo-cards .story-card{top:-16px;right:2%;width:230px}.promo-cards .story-card .asset-preview{height:82px}.promo-cards .campaign-card{top:164px;right:3%}}
-/* Eleva a composição de cards para mantê-la visível na primeira tela. */
-@media(min-width:901px){.promo-cards{margin-top:0}.promo-cards .custom-card{top:-10px}.promo-cards .story-card{top:-34px}.promo-cards .campaign-card{top:102px}.promo-cards .plan-card{top:84px}.promo-cards .music-card{bottom:72px}}
-/* Espaço de respiro entre o título e os cards superiores. */
-@media(min-width:901px){.promo-cards{margin-top:18px}.promo-cards .custom-card{top:6px}.promo-cards .story-card{top:-8px}.promo-cards .campaign-card{top:118px}.promo-cards .plan-card{top:100px}.promo-cards .music-card{bottom:58px}}
-.box-icon{display:grid;place-items:center;width:20px;height:20px;border-radius:6px;background:#161616;color:#fff;font-size:11px;font-weight:700;line-height:1}.custom-card .box-icon{background:var(--red)}.campaign-card .box-icon{background:#a87739}.music-card .box-icon{background:#3b2b13}.story-card .box-icon{background:#2b2b2b}.plan-card .box-icon{background:#101010;color:#e4bf78}
-.box-icon{width:22px;height:22px;border:1px solid #e4e4e4;border-radius:6px;background:#f6f6f6;color:#191919}.box-icon svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.custom-card .box-icon,.campaign-card .box-icon,.music-card .box-icon,.story-card .box-icon,.plan-card .box-icon{background:#f6f6f6;color:#191919}
-.eyebrow-star{margin-left:2px;color:var(--red);font-size:13px;line-height:0}
-.detail-banner-stage .banner-text{display:block;max-width:48%;margin-top:6px;color:rgba(255,255,255,.78);font-size:9px;line-height:1.3}.detail-banner-stage .banner-line{display:none}@media(max-width:520px){.detail-banner-stage .banner-text{display:block;font-size:8px;max-width:53%}}
-.detail-banner-stage .banner-copy{display:flex;align-items:center;height:100%;padding-top:12px;padding-bottom:12px}.detail-banner-stage .banner-message{max-width:52%;color:#fff;font-size:clamp(12px,1.35vw,17px);font-weight:700;letter-spacing:-.04em;line-height:1.18}@media(max-width:520px){.detail-banner-stage .banner-message{max-width:55%;font-size:10px;line-height:1.25}}
-/* Organização de sessões e composição editorial do banner fixo. */
-.promo-cards .sessions-card{top:82px;left:4%;z-index:2;width:180px;padding-bottom:12px}.promo-cards .sessions-card .asset-preview{width:calc(100% - 24px);height:150px;margin:0 12px;object-fit:contain;background:#fff}@media(min-width:901px){.promo-cards .sessions-card{--tilt:0deg;transform:rotate(0);animation-delay:.58s,1.58s}}@media(max-width:900px){.promo-cards .sessions-card{flex:0 0 185px}}
-.detail-banner-stage .banner-copy{position:relative;width:48%;max-width:48%;margin-left:7%;padding-left:19px!important}.detail-banner-stage .banner-copy:before{content:'';position:absolute;top:50%;left:0;width:3px;height:42px;background:var(--red);transform:translateY(-50%)}.detail-banner-stage .banner-message{max-width:100%;font-size:clamp(12px,1.45vw,18px);line-height:1.16}@media(max-width:520px){.detail-banner-stage .banner-copy{width:52%;max-width:52%;margin-left:5%;padding-left:12px!important}.detail-banner-stage .banner-message{font-size:9px}}
-/* Coluna superior direita: sessões acima do Story, sem sobreposição. */
-@media(min-width:901px){.promo-cards .sessions-card{top:-18px;right:2%;left:auto;z-index:5}.promo-cards .story-card{top:188px;right:2%;z-index:4}.promo-cards .campaign-card{top:178px;right:34%;z-index:3}}
-/* Desktop amplo: duas faixas de cards sem esconder informações. */
-@media(min-width:1201px){.promo-cards{min-height:440px}.promo-cards .music-card{top:0;bottom:auto;left:0}.promo-cards .custom-card{top:0;left:38%}.promo-cards .sessions-card{top:0;right:1%;left:auto}.promo-cards .campaign-card{top:188px;right:auto;left:0}.promo-cards .plan-card{top:188px;left:28%}.promo-cards .story-card{top:208px;right:1%}}
-@media(min-width:901px) and (max-width:1200px){.promo-cards{min-height:445px}.promo-cards .music-card{top:0;bottom:auto;left:0}.promo-cards .custom-card{top:0;left:36%}.promo-cards .sessions-card{top:0;right:0;left:auto}.promo-cards .campaign-card{top:190px;right:auto;left:0}.promo-cards .plan-card{top:190px;left:33%}.promo-cards .story-card{top:220px;right:0}}
-/* Título principal: duas linhas exatas no painel esquerdo, sem encurtar o texto. */
-@media(min-width:901px){.promo-copy{max-width:680px}.promo-title{font-size:clamp(28px,3.1vw,48px);white-space:nowrap;letter-spacing:-.07em}}
-@media(max-width:900px){.promo-title{font-size:clamp(30px,7vw,43px);letter-spacing:-.065em}}
-.promo-title span{display:inline}
-/* Distribuição mais arejada dos cards no desktop. */
-@media(min-width:1201px){.promo-cards .music-card{top:12px;left:0}.promo-cards .custom-card{top:0;left:36%}.promo-cards .sessions-card{top:14px;right:1%}.promo-cards .campaign-card{top:205px;left:5%}.promo-cards .plan-card{top:190px;left:36%}.promo-cards .story-card{top:218px;right:5%}}
-.detail-banner-stage .banner-copy{align-items:flex-start;padding-top:24px!important;padding-bottom:10px}@media(max-width:520px){.detail-banner-stage .banner-copy{padding-top:19px!important}}
-</style></head><body>
-<div class="login-screen"><section class="promo-side" aria-label="Nova experiência Frizzar"><div class="promo-inner"><div class="promo-copy"><p class="eyebrow">Lançamento<span class="eyebrow-star">*</span></p><h1 class="promo-title">Novidades chegando<br>no seu site <span>Frizzar.</span></h1></div><div class="promo-cards" aria-label="Recursos da nova área de clientes">
-<article class="float-card custom-card"><div class="card-top"><h2 class="card-title">Personalize do seu jeito</h2><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="13.5" cy="10.5" r="7.5"/><path d="M6.4 13.1A3.6 3.6 0 1 1 3 18a2.2 2.2 0 0 0 2.2 2.2h1.2"/></svg></span></div><img class="asset-preview" src="imagens/box%20de%20cores.png" alt="Prévia de personalização de cores"></article>
-<article class="float-card campaign-card"><div class="card-top"><h2 class="card-title">Campanhas de venda</h2><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m4 14 12-5v10L4 14Z"/><path d="M16 10h2a3 3 0 0 1 0 6h-2M7 15l1.5 4"/></svg></span></div><img class="asset-preview" src="imagens/promo%C3%A7%C3%A3o.png" alt="Campanha de desconto para corte"></article>
-<article class="float-card music-card"><div class="card-top"><h2 class="card-title">O que vocês escutam</h2><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></span></div><img class="asset-preview" src="imagens/spotify.png" alt="Prévia de playlist para barbearia"></article>
-<article class="float-card story-card"><div class="card-top"><h2 class="card-title">Story interativo</h2><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="m10 8 5 4-5 4Z"/></svg></span></div><img class="asset-preview" src="imagens/story.png" alt="Story interativo com categorias"></article>
-<article class="float-card plan-card"><div class="card-top"><h2 class="card-title">Planos de cortes</h2><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 0 2-2h12a2 2 0 0 0 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 0-2 2H6a2 2 0 0 0-2-2v-3a2 2 0 0 0 0-4V8Z"/><path d="M12 8v8"/></svg></span></div><img class="asset-preview" src="imagens/plano.png" alt="Plano VIP para barbearia"></article>
-<article class="float-card sessions-card"><div class="card-top"><h2 class="card-title">Organização de sessões</h2><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1.5 1.5L7 4M3 12l1.5 1.5L7 10M3 18l1.5 1.5L7 16"/></svg></span></div><img class="asset-preview" src="imagens/sessoes.png" alt="Organização de sessões do site"></article>
-</div><div class="cards-stage detail-banner-stage"><section class="feature-banner" aria-label="Frizzar para barbearias e salões"><div class="banner-copy"><h1 class="banner-message">Mais autonomia para personalizar a presença digital e apresentar sua marca de forma profissional.</h1></div><img class="banner-people" src="imagens/barbeiro.png" alt="Profissionais de barbearia e salão"></section></div></div></section>
-<section class="login-side"><div class="login-logo">FRIZZAR<span class="dot">.</span></div><form class="login-form" onsubmit="return false;"><input type="email" placeholder="Email" required><input type="password" placeholder="Senha" required><button type="submit">Entrar</button><a href="#">Esqueceu sua senha?</a></form></section></div>
-</body></html>
+/* ============================================================
+   Tokens — troque as imagens aqui, tudo puxa dessas variáveis
+   ============================================================ */
+:root{
+  --ink:#0c0c0c;
+  --paper:#ffffff;
+  --red:#e0473f;
+  --blue:#2563eb;
+  --gold:#d7aa62;
+  --muted:rgba(255,255,255,.66);
+  --hairline:rgba(255,255,255,.1);
+  --promo-image:url('imagens/fundo.png');
+  --banner-image:url('imagens/ChatGPT%20Image%2027%20de%20ago.%20de%202026,%2014_05_42.png');
+  --radius-lg:20px;
+  --radius-md:14px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,'Segoe UI',Roboto,Arial,sans-serif;min-height:100vh;overflow-x:hidden;background:var(--paper)}
+.login-screen{display:flex;min-height:100vh;width:100%}
+
+/* ============================================================
+   Painel promocional (esquerda)
+   ============================================================ */
+.promo-side{
+  position:relative;flex:1 1 58%;min-width:0;
+  padding:60px 64px 48px;
+  background:var(--ink) var(--promo-image) center/cover no-repeat;
+  color:#fff;overflow:hidden;
+}
+.promo-side::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(120deg,rgba(6,4,5,.94),rgba(10,6,8,.86) 45%,rgba(10,6,8,.72));
+}
+.promo-inner{position:relative;z-index:1;display:flex;flex-direction:column;max-width:760px}
+
+.eyebrow{display:flex;align-items:center;gap:9px;margin-bottom:16px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--red)}
+.eyebrow-star{margin-left:1px;color:var(--red)}
+
+.promo-title{font-size:clamp(32px,3.6vw,52px);font-weight:800;letter-spacing:-.04em;line-height:1.05}
+.promo-title span{color:var(--red)}
+.promo-lead{margin-top:16px;max-width:440px;color:var(--muted);font-size:14.5px;line-height:1.6}
+
+/* ============================================================
+   Grade de recursos — imagem à esquerda, nome à direita,
+   texto embaixo alinhado à esquerda
+   ============================================================ */
+.feature-grid{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  margin-top:58px;
+}
+.feature-card{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  transition:transform .2s ease;
+}
+.feature-card:nth-child(even){flex-direction:row-reverse;text-align:right}
+.feature-card:hover{transform:translateX(4px)}
+.feature-card:nth-child(even):hover{transform:translateX(-4px)}
+.feature-thumb{
+  flex:0 0 190px;width:190px;height:190px;border-radius:16px;
+  object-fit:cover;background:#151515;border:1px solid rgba(255,255,255,.08);
+}
+.feature-thumb.first-feature-thumb{
+  height:auto;
+  aspect-ratio:648 / 429;
+  object-fit:contain;
+}
+.feature-thumb.wide{
+  flex-basis:320px;width:320px;height:121px;
+  border:none;background:transparent;object-fit:cover;
+}
+.feature-name{font-size:22px;font-weight:700;letter-spacing:-.015em;line-height:1.25}
+
+/* ============================================================
+   Banner inferior (equipe / apresentação da marca)
+   ============================================================ */
+.promo-banner{
+  position:relative;margin-top:30px;min-height:150px;
+  border-radius:var(--radius-lg);overflow:hidden;
+  border:1px solid rgba(215,170,98,.3);
+  background:#151009 var(--banner-image) center/cover no-repeat;
+  box-shadow:0 24px 55px rgba(0,0,0,.4);
+  display:flex;align-items:center;
+}
+@media(min-width:901px){
+  .promo-side{padding-bottom:240px}
+  .promo-banner{
+    position:fixed;z-index:5;
+    left:64px;right:484px;bottom:40px;
+    margin-top:0;
+  }
+}
+@media(min-width:901px) and (max-width:1200px){
+  .promo-banner{left:40px;right:460px;bottom:30px}
+}
+.promo-banner::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(4,3,3,.95) 0%,rgba(8,5,4,.82) 42%,rgba(10,6,3,.25) 100%);
+}
+.banner-copy{position:relative;z-index:1;max-width:50%;padding:22px 20px 22px 26px;border-left:3px solid var(--red)}
+.banner-message{color:#fff;font-weight:700;font-size:clamp(13px,1.5vw,18px);line-height:1.28;letter-spacing:-.02em}
+.banner-people{
+  position:absolute;z-index:1;right:0;bottom:0;
+  width:min(40%,320px);height:100%;object-fit:contain;object-position:bottom;
+  pointer-events:none;
+}
+
+/* ============================================================
+   Painel de login (direita)
+   ============================================================ */
+.login-side{
+  flex:0 0 420px;max-width:420px;background:var(--paper);
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  padding:60px 40px 40px;
+}
+.login-logo{font-size:26px;font-weight:700;letter-spacing:.05em;color:#111;margin-bottom:40px;display:flex;align-items:baseline;gap:2px}
+.login-logo .dot{color:var(--red);font-size:26px;line-height:0}
+.login-form{width:100%;max-width:320px}
+.login-form input{
+  width:100%;padding:14px 16px;margin-bottom:14px;
+  border:1px solid #dcdcdc;border-radius:8px;font-size:14px;color:#222;
+  outline:none;transition:border-color .15s ease,box-shadow .15s ease;
+}
+.login-form input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(224,71,63,.12)}
+.login-form button{
+  width:100%;padding:14px;margin-top:6px;margin-bottom:18px;
+  background:var(--blue);color:#fff;border:none;border-radius:8px;
+  font-size:15px;font-weight:700;cursor:pointer;transition:background .15s ease;
+}
+.login-form button:hover{background:#1d4ed8}
+.login-form a{display:block;text-align:left;font-size:13px;color:#6b6b6b;text-decoration:none}
+.login-form a:hover{color:var(--red);text-decoration:underline}
+
+/* ============================================================
+   Responsivo
+   ============================================================ */
+@media(max-width:1080px){
+  .promo-side{padding:48px 40px 36px}
+}
+@media(max-width:900px){
+  .login-screen{flex-direction:column}
+  .promo-side{order:1;padding:44px 24px 32px}
+  .login-side{order:2;flex:none;max-width:100%;padding:44px 24px}
+  .banner-people{width:min(46%,240px)}
+}
+@media(max-width:520px){
+  .promo-title{font-size:30px}
+  .banner-copy{max-width:56%;padding:16px}
+  .banner-message{font-size:11px}
+  .banner-people{width:38%}
+  .feature-thumb{flex:0 0 120px;width:120px;height:120px}
+  .feature-thumb.wide{flex-basis:200px;width:200px;height:76px}
+  .feature-name{font-size:17px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="login-screen">
+
+  <section class="promo-side" aria-label="Nova experiência Frizzar">
+    <div class="promo-inner">
+
+      <div class="promo-copy">
+        <p class="eyebrow">Lançamento<span class="eyebrow-star">*</span></p>
+        <h1 class="promo-title">Novidades chegando<br>no seu site <span>Frizzar.</span></h1>
+      </div>
+
+      <div class="feature-grid" aria-label="Recursos da nova área de clientes">
+        <article class="feature-card">
+          <img class="feature-thumb first-feature-thumb" src="imagens/box%20de%20cores.png" alt="Prévia de personalização de cores">
+          <h2 class="feature-name">Personalize do seu jeito</h2>
+        </article>
+
+        <article class="feature-card">
+          <img class="feature-thumb" src="imagens/promo%C3%A7%C3%A3o.png" alt="Campanha de desconto para corte">
+          <h2 class="feature-name">Campanhas de venda</h2>
+        </article>
+
+        <article class="feature-card">
+          <img class="feature-thumb wide" src="imagens/spotify.png" alt="Prévia de playlist para barbearia">
+          <h2 class="feature-name">O que vocês escutam</h2>
+        </article>
+
+        <article class="feature-card">
+          <img class="feature-thumb wide" src="imagens/story.png" alt="Story clicável com categorias">
+          <h2 class="feature-name">Story clicável</h2>
+        </article>
+
+        <article class="feature-card">
+          <img class="feature-thumb" src="imagens/plano.png" alt="Plano de assinatura para barbearia">
+          <h2 class="feature-name">Plano de assinatura</h2>
+        </article>
+      </div>
+
+      <section class="promo-banner" aria-label="Frizzar para barbearias e salões">
+        <div class="banner-copy">
+          <p class="banner-message">Mais autonomia para personalizar a presença digital e apresentar sua marca de forma profissional.</p>
+        </div>
+        <img class="banner-people" src="imagens/barbeiro.png" alt="Profissionais de barbearia e salão">
+      </section>
+
+    </div>
+  </section>
+
+  <section class="login-side" aria-label="Entrar na sua conta">
+    <div class="login-logo">FRIZZAR<span class="dot">.</span></div>
+    <form class="login-form" onsubmit="return false;">
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+      <a href="#">Esqueceu sua senha?</a>
+    </form>
+  </section>
+
+</div>
+</body>
+</html>
